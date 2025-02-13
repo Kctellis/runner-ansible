@@ -15,19 +15,19 @@ RUN mkdir -p /ansible && chown 1983:1983 /ansible
 # Set bash as default shell
 SHELL ["/bin/bash", "-c"]
 
-FROM ansible AS base
-USER root
-CMD ["/bin/bash"]
+#FROM ansible AS base
+#USER root
+#CMD ["/bin/bash"]
 
-FROM ansible AS gcp
-RUN pip install --no-cache-dir requests==2.* google-auth==2.*
-USER 1983
-CMD ["/bin/bash"]
+#FROM ansible AS gcp
+#RUN pip install --no-cache-dir requests==2.* google-auth==2.*
+#USER 1983
+#CMD ["/bin/bash"]
 
-FROM ansible AS aws
-RUN pip install --no-cache-dir boto3==1.*
-USER 1983
-CMD ["/bin/bash"]
+#FROM ansible AS aws
+#RUN pip install --no-cache-dir boto3==1.*
+#USER 1983
+#CMD ["/bin/bash"]
 
 FROM ansible AS azure
 RUN apk add --virtual=build --no-cache gcc musl-dev linux-headers &&\
